@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seite nicht gefunden · Wurzelwerk</title>
+<style>body{font:1.1rem/1.5 Garamond,"EB Garamond","Iowan Old Style",Palatino,Georgia,serif;background:#faf7f0;
+color:#2b2a26;margin:0;padding:2rem 1rem;max-width:36rem}a{color:#7a5a2f}
+@media (prefers-color-scheme:dark){body{background:#1d1c19;color:#e9e4d8}a{color:#d9b77a}}</style>
+</head><body><h1>Seite nicht gefunden</h1><p id="t">Einen Moment …</p>
+<script>
+(function () {
+  var namen = {"LH": "So liest du dieses Buch", "FA": "Mit Kindern im Garten", "SI": "Sicherheit im Garten", "T": "Handgriffe durch das Jahr", "OS": "Obstgehölze schneiden", "S": "Schädlinge & Krankheiten", "NZ": "Nützlinge", "P01": "Grünkohl", "P02": "Rosenkohl", "P03": "Lauch", "P04": "Pastinake", "P05": "Topinambur", "P06": "Feldsalat", "P07": "Winterportulak", "P08": "Kresse", "P09": "Microgreens & Sprossen", "P10": "Chili", "P11": "Paprika", "P12": "Aubergine", "P13": "Knollensellerie", "P14": "Radieschen", "P15": "Spinat", "P16": "Pflücksalat", "P17": "Zuckerschote", "P18": "Erbse", "P19": "Möhre", "P20": "Kohlrabi", "P21": "Rote Bete", "P22": "Mangold", "P23": "Zwiebel", "P24": "Kartoffel", "P25": "Rhabarber", "P26": "Erdbeere", "P27": "Schnittlauch", "P28": "Petersilie", "P29": "Gänseblümchen", "P30": "Tomate", "P31": "Gurke", "P32": "Zucchini", "P33": "Buschbohne", "P34": "Stangenbohne", "P35": "Fenchel", "P36": "Basilikum", "P37": "Zuckermelone", "P38": "Himbeere", "P39": "Johannisbeere", "P40": "Stachelbeere", "P41": "Heidelbeere", "P42": "Süßkirsche", "P43": "Ringelblume", "P44": "Kapuzinerkresse", "P45": "Sonnenblume", "P46": "Borretsch", "P47": "Kürbis", "P48": "Weißkohl", "P49": "Rotkohl", "P50": "Chinakohl", "P51": "Pak Choi", "P52": "Herbstrübe", "P53": "Knoblauch", "P54": "Apfel", "P55": "Birne", "P56": "Zwetschge", "P57": "Quitte", "P58": "Brombeere", "P59": "Feige", "P60": "Süßkartoffel"};
+  var projekt = "wurzelwerk";
+  var teile = location.pathname.split("/").filter(Boolean);
+  var basis = "/";
+  if (projekt && teile.length && teile[0].toLowerCase() === projekt) { basis = "/" + teile.shift() + "/"; }
+  var roh = decodeURIComponent(teile[0] || "");
+  var k = roh.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  if (/^P\d$/.test(k)) k = "P0" + k.slice(1);
+  if (namen[k]) { location.replace(basis + k + "/" + location.hash); return; }
+  var norm = function (s) { return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); };
+  for (var x in namen) { if (roh && norm(namen[x]).indexOf(norm(roh)) === 0) { location.replace(basis + x + "/"); return; } }
+  location.replace(basis + (roh ? "?q=" + encodeURIComponent(roh) : ""));
+})();
+</script>
+<noscript><p>Zur <a href="/">Startseite</a>.</p></noscript>
+</body></html>
