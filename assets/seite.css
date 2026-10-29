@@ -43,6 +43,15 @@ a { color: var(--akzent); text-underline-offset: .15em; }
   display: inline-block; vertical-align: .2em; margin-left: .25em; padding: .12em .45em .1em;
   font: 600 .7rem/1 var(--sans); letter-spacing: .1em; color: var(--papier); background: var(--akzent); border-radius: 3px;
 }
+/* Blättern: vorige und nächste Seite in Buchreihenfolge */
+.blaettern { display: flex; justify-content: space-between; gap: 1rem; padding: .5rem 1rem; font: .9rem/1.3 var(--sans); }
+.blaettern a { display: inline-flex; align-items: baseline; gap: .35em; min-width: 0; padding: .35rem 0; text-decoration: none; }
+.blaettern a:hover .ziel { text-decoration: underline; }
+.blaettern .next { margin-left: auto; text-align: right; }
+.blaettern .ziel { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.blaettern .pfeil { font-size: 1.3em; line-height: 1; }
+.blaettern .kennung { flex: none; margin-left: 0; vertical-align: baseline; }
+main + .blaettern { border-top: 1px solid var(--linie); }
 .fuss { padding: 1rem; color: var(--grau); font-size: .9rem; border-top: 1px solid var(--linie); }
 main { padding: 0 1rem 1.5rem; }
 
@@ -143,6 +152,6 @@ main { padding: 0 1rem 1.5rem; }
   .blatt { flex-basis: min(calc(50% - .3rem), calc((100vh - 7rem) * 170 / 240)); }
   .blatt .bild { width: 100%; height: auto; }
   .quelle, .filter { scroll-margin-top: 1rem; }
-  main, .kopf, .fuss { max-width: 90rem; margin-left: auto; margin-right: auto; }
+  main, .kopf, .blaettern, .fuss { max-width: 90rem; margin-left: auto; margin-right: auto; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }

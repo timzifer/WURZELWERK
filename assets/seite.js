@@ -145,6 +145,12 @@
 
   document.addEventListener("keydown", function (ev) {
     if (ev.key === "Escape" && fest) { fest = null; zeige(null); }
+    // Blättern mit ← und →, außer beim Tippen oder mit Zusatztasten
+    if ((ev.key === "ArrowLeft" || ev.key === "ArrowRight") && !ev.altKey && !ev.ctrlKey && !ev.metaKey &&
+        !ev.shiftKey && !/^(INPUT|TEXTAREA|SELECT)$/.test((ev.target.tagName || ""))) {
+      var ziel = document.querySelector(ev.key === "ArrowLeft" ? 'a[rel="prev"]' : 'a[rel="next"]');
+      if (ziel) location.href = ziel.href;
+    }
   });
 
   // Sprung von der Gesamtliste (#q-B02): Quelle gleich hervorheben
